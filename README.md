@@ -36,8 +36,8 @@ This code also supports remote uploading to the ESP8266 using Arduino's OTA libr
 #### Parts List
 - [Digital RGB WS2812 LED Strip](http://amzn.to/2ilIvdf)
 - [NodeMCU](http://amzn.to/2hd6RJk)
-- [Aluminum Mounting Channel/Diffuser](http://geni.us/JBDhv7)
-- [12v to 5v Step Down](http://geni.us/PghhV9)
+- [Aluminum Mounting Channel/Diffuser](https://amzn.to/2LoGSI5)
+- [Breakout PCB](https://www.pcbway.com/project/shareproject/NodeMCU_DHT_Sensor_LED_Controller_Breakout_Board_v_1_1.html)
 - [12V 15amp Power Supply](http://geni.us/8rKC)
 - [Strip Connector](http://geni.us/OL7tHv)
 - [Logic Level Shifter](http://geni.us/4hJAyy)
@@ -89,6 +89,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2MTE0NzY2NiwtMTg5NzAwMTE1MSwtMT
-g3NDQ4MDE4NiwtNjExMzE4OTU4XX0=
+eyJoaXN0b3J5IjpbLTIwODczNTgxOTgsLTE4OTcwMDExNTEsLT
+E4NzQ0ODAxODYsLTYxMTMxODk1OF19
 -->
