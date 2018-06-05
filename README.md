@@ -2,6 +2,9 @@
 
 This is my version of the NodeMCU LED strip controller, based on bruhAutomation's [project](https://github.com/bruhautomation/ESP-MQTT-JSON-Digital-LEDs), with my modifications, including:
 
+- Ability to control mutliple strips at once using grouped MQTT topics
+- A fix for flickering issues with faster chipsets (FastLED interrupt issue)
+- Additional effects written
 
 #### Supported Features Include
 - RGB Color Selection
@@ -82,5 +85,5 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjEwMjUxMTAsLTYxMTMxODk1OF19
+eyJoaXN0b3J5IjpbLTE5MjUyMzkwODcsLTYxMTMxODk1OF19
 -->
