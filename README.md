@@ -29,8 +29,8 @@ This code also supports remote uploading to the ESP8266 using Arduino's OTA libr
 [![Demo Video](https://img.youtube.com/vi/WNp4G49tkrQ/0.jpg)](https://youtu.be/WNp4G49tkrQ)
 
 #### Arduino IDE Setup video
-[![Tutorial Video](http://i.imgur.com/9UMl8Xo.jpg)](https://www.youtube.com/watch?v=9KI36GTgwuQ "The BEST Digital LED Strip Light Tutorial - DIY, WIFI-Controllable via ESP, MQTT, and Home Assistant")
-
+[![Tutorial Video](http://img.youtube.com/vi/7dm9OPTRvUQ/0.jpg)](https://youtu.be/7dm9OPTRvUQ)
+#### openHAB Conf
 #### Parts List
 - [Digital RGB Leds](http://geni.us/8mBml)
 - [NodeMCU](http://geni.us/4pVoT)
@@ -87,6 +87,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODc2NDI3MzcsLTE4OTcwMDExNTEsLT
-E4NzQ0ODAxODYsLTYxMTMxODk1OF19
+eyJoaXN0b3J5IjpbMTgxMjgwNDgyNCwtMTg5NzAwMTE1MSwtMT
+g3NDQ4MDE4NiwtNjExMzE4OTU4XX0=
 -->
