@@ -1,8 +1,6 @@
 # ESP MQTT JSON Digital LEDs
 
-This project shows a super easy way to get started using Digital LED strips with [Home Assistant](https://home-assistant.io/), a sick, open-source Home Automation platform that can do just about anything. 
-
-The code covered in this repository utilizes [Home Assistant's MQTT JSON Light Component](https://home-assistant.io/components/light.mqtt_json/) and an ESP8266 microcontroller. 
+This is my version of the NodeMCU LED strip controller, based on bruhAutomation's [(project)[https://github.com/bruhautomation/ESP-MQTT-JSON-Digital-LEDs]
 
 #### Supported Features Include
 - RGB Color Selection
@@ -83,5 +81,5 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMTMxODk1OF19
+eyJoaXN0b3J5IjpbOTk3NTg5NjQ1LC02MTEzMTg5NThdfQ==
 -->
