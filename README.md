@@ -6,7 +6,7 @@ This is my version of the NodeMCU LED strip controller, based on bruhAutomation'
 - A fix for flickering issues with faster chipsets (FastLED interrupt issue)
 - Additional effects written by me (Christmas tree, Sine Wave, Random Stars)
 - Making the entire project "production-quality" using a [printed circuit board](https://www.pcbway.com/project/shareproject/NodeMCU_DHT_Sensor_LED_Controller_Breakout_Board_v_1_1.html) to hold the components/wiring together and a [3d printed enclosure](https://www.thingiverse.com/thing:2690563) to make the controller look professional installed around the home.
-- Focusing on openHAB as the home automation control suite
+- Focusing on [openHAB](https://www.openhab.org) as the home automation control suite, since it is what I use.
 
 #### Supported Features Include
 - RGB Color Selection
@@ -17,7 +17,7 @@ This is my version of the NodeMCU LED strip controller, based on bruhAutomation'
 - Effects with Animation Speed
 - Over-the-Air (OTA) Upload from the ArduinoIDE!
 
-Some of the effects incorporate the currrently selected color (sinelon, confetti, juggle, etc) while other effects use pre-defined colors. You can also select custom transition speeds between colors. The transition variable in Home Assistant (HA) also functions to control the animation speed of the currently running animation. The input_slider and automation in the HA configuration example allow you to easily set a transition speed from HA's user interface without needing to use the Services tool. 
+Some of the effects incorporate the currrently selected color (sinelon, confetti, juggle, etc) while other effects use pre-defined colors. You can also select custom transition speeds between colors. The transition variable also functions to control the animation speed of the currently running animation. The input_slider and automation in the HA configuration example allow you to easily set a transition speed from HA's user interface without needing to use the Services tool. 
 
 The default speed for the effects is hard coded and is set when the light is first turned on. When changing between effects, the previously used transition speed will take over. If the effects don't look great, play around with the slider to adjust the transition speed (AKA the effect's animation speed). 
 
@@ -87,6 +87,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc0OTgyMzkzLC0xODk3MDAxMTUxLC0xOD
-c0NDgwMTg2LC02MTEzMTg5NThdfQ==
+eyJoaXN0b3J5IjpbLTEyNjYyMzk5OTgsLTE4OTcwMDExNTEsLT
+E4NzQ0ODAxODYsLTYxMTMxODk1OF19
 -->
