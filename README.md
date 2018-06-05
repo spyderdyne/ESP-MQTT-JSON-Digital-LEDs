@@ -5,7 +5,7 @@ This is my version of the NodeMCU LED strip controller, based on bruhAutomation'
 - Ability to control mutliple strips at once using grouped MQTT topics
 - A fix for flickering issues with faster chipsets (FastLED interrupt issue)
 - Additional effects written by me (Christmas tree, Sine Wave, Random Stars)
-- Making the entire project "production-quality" using a [3d printed enclosure](https://www.thingiverse.com/thing:2690563), a [printed circuit board](
+- Making the entire project "production-quality" using a [printed circuit board](https://www.pcbway.com/project/shareproject/NodeMCU_DHT_Sensor_LED_Controller_Breakout_Board_v_1_1.html) to hold the components/wiring together and a [3d printed enclosure](https://www.thingiverse.com/thing:2690563) to make
 
 #### Supported Features Include
 - RGB Color Selection
@@ -86,6 +86,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4OTcwMDExNTEsLTE4NzQ0ODAxODYsLT
-YxMTMxODk1OF19
+eyJoaXN0b3J5IjpbLTEzOTkyODYxMTgsLTE4OTcwMDExNTEsLT
+E4NzQ0ODAxODYsLTYxMTMxODk1OF19
 -->
