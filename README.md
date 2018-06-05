@@ -25,10 +25,10 @@ The default speed for the effects is hard coded and is set when the light is fir
 This code also supports remote uploading to the ESP8266 using Arduino's OTA library. To utilize this, you'll need to first upload the sketch using the traditional USB method. However, if you need to update your code after that, your WIFI-connected ESP chip should show up as an option under Tools -> Port -> Porch at your.ip.address.xxx. More information on OTA uploading can be found [here](http://esp8266.github.io/Arduino/versions/2.0.0/doc/ota_updates/ota_updates.html). Note: You cannot access the serial monitor over WIFI at this point.  
 
 
-#### Demo/Build Videos
-[![Demo Video](https://img.youtube.com/vi/WNp4G49tkrQ/0.jpg)
+#### Demo/Hardware Build Video
+[![Demo Video](https://img.youtube.com/vi/WNp4G49tkrQ/0.jpg)](https://youtu.be/WNp4G49tkrQ)
 
-#### Tutorial Video
+#### Arduino IDE Setup video
 [![Tutorial Video](http://i.imgur.com/9UMl8Xo.jpg)](https://www.youtube.com/watch?v=9KI36GTgwuQ "The BEST Digital LED Strip Light Tutorial - DIY, WIFI-Controllable via ESP, MQTT, and Home Assistant")
 
 #### Parts List
@@ -87,6 +87,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY3NTQyNDcsLTE4OTcwMDExNTEsLTE4Nz
-Q0ODAxODYsLTYxMTMxODk1OF19
+eyJoaXN0b3J5IjpbLTExODc2NDI3MzcsLTE4OTcwMDExNTEsLT
+E4NzQ0ODAxODYsLTYxMTMxODk1OF19
 -->
