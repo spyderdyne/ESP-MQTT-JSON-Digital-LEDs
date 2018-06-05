@@ -30,7 +30,9 @@ This code also supports remote uploading to the ESP8266 using Arduino's OTA libr
 
 #### Arduino IDE Setup video
 [![Tutorial Video](http://img.youtube.com/vi/7dm9OPTRvUQ/0.jpg)](https://youtu.be/7dm9OPTRvUQ)
-#### openHAB Conf
+#### openHAB Configuration Video
+[![openHAB Video](https://img.youtube.com/vi/Lnv-2xBhabo/0.jpg)](https://youtu.be/Lnv-2xBhabo)
+
 #### Parts List
 - [Digital RGB Leds](http://geni.us/8mBml)
 - [NodeMCU](http://geni.us/4pVoT)
@@ -87,6 +89,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxMjgwNDgyNCwtMTg5NzAwMTE1MSwtMT
+eyJoaXN0b3J5IjpbLTQ0NzE3NDQ1NiwtMTg5NzAwMTE1MSwtMT
 g3NDQ4MDE4NiwtNjExMzE4OTU4XX0=
 -->
