@@ -1,6 +1,7 @@
 # ESP MQTT JSON Digital LEDs
 
-This is my version of the NodeMCU LED strip controller, based on bruhAutomation's [(project)[https://github.com/bruhautomation/ESP-MQTT-JSON-Digital-LEDs]
+This is my version of the NodeMCU LED strip controller, based on bruhAutomation's [project](https://github.com/bruhautomation/ESP-MQTT-JSON-Digital-LEDs), with my modifications, including:
+
 
 #### Supported Features Include
 - RGB Color Selection
@@ -81,5 +82,5 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 }
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk3NTg5NjQ1LC02MTEzMTg5NThdfQ==
+eyJoaXN0b3J5IjpbLTExMjEwMjUxMTAsLTYxMTMxODk1OF19
 -->
