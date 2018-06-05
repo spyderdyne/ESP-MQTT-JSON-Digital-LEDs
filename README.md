@@ -82,3 +82,6 @@ Fade the Light Off Over 5 Seconds - light.turn_off
 "transition":"50"
 }
 ```
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTYxMTMxODk1OF19
+-->
