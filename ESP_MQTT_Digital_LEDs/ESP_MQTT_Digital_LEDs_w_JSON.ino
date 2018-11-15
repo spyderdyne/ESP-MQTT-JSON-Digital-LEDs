@@ -52,7 +52,7 @@ int OTAport = 8266;
 /************* MQTT TOPICS (change these topics as you wish)  **************************/
 const char* light_state_topic = "home/sensorname";
 const char* light_set_topic = "home/sensorname/set";
-const char* light_set_topic_group = "home/sensornamegroup/set";
+const char* light_set_topic_group = "home/LEDStrip_Group1/set";
 
 const char* on_cmd = "ON";
 const char* off_cmd = "OFF";
@@ -69,7 +69,7 @@ const int BUFFER_SIZE = JSON_OBJECT_SIZE(10);
 
 
 /*********************************** FastLED Defintions ********************************/
-#define NUM_LEDS    144
+#define NUM_LEDS    51
 
 #define DATA_PIN    4
 //#define CLOCK_PIN 5
@@ -86,6 +86,202 @@ byte blue = 255;
 byte brightness = 64;
 
 
+///////////////DrZzs Palettes for custom BPM effects//////////////////////////
+///////////////Add any custom palettes here//////////////////////////////////
+
+// Gradient palette "bhw2_thanks_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw2/tn/bhw2_thanks.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 36 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw2_thanks_gp ) {
+    0,   9,  5,  1,
+   48,  25,  9,  1,
+   76, 137, 27,  1,
+   96,  98, 42,  1,
+  124, 144, 79,  1,
+  153,  98, 42,  1,
+  178, 137, 27,  1,
+  211,  23,  9,  1,
+  255,   9,  5,  1};
+
+// Gradient palette "bhw2_redrosey_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw2/tn/bhw2_redrosey.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 32 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw2_redrosey_gp ) {
+    0, 103,  1, 10,
+   33, 109,  1, 12,
+   76, 159,  5, 48,
+  119, 175, 55,103,
+  127, 175, 55,103,
+  178, 159,  5, 48,
+  221, 109,  1, 12,
+  255, 103,  1, 10};
+
+// Gradient palette "bluered_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/h5/tn/bluered.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 12 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bluered_gp ) {
+    0,   0,  0,255,
+  127, 255,255,255,
+  255, 255,  0,  0};
+
+// Gradient palette "bhw2_xmas_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw2/tn/bhw2_xmas.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 48 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw2_xmas_gp ) {
+    0,   0, 12,  0,
+   40,   0, 55,  0,
+   66,   1,117,  2,
+   77,   1, 84,  1,
+   81,   0, 55,  0,
+  119,   0, 12,  0,
+  153,  42,  0,  0,
+  181, 121,  0,  0,
+  204, 255, 12,  8,
+  224, 121,  0,  0,
+  244,  42,  0,  0,
+  255,  42,  0,  0};
+
+// Gradient palette "bhw2_xc_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw2/tn/bhw2_xc.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 28 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw2_xc_gp ) {
+    0,   4,  2,  9,
+   58,  16,  0, 47,
+  122,  24,  0, 16,
+  158, 144,  9,  1,
+  183, 179, 45,  1,
+  219, 220,114,  2,
+  255, 234,237,  1};
+
+// Gradient palette "bhw1_04_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw1/tn/bhw1_04.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 20 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw1_04_gp ) {
+    0, 229,227,  1,
+   15, 227,101,  3,
+  142,  40,  1, 80,
+  198,  17,  1, 79,
+  255,   0,  0, 45};
+
+// Gradient palette "bhw4_051_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw4/tn/bhw4_051.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 36 bytes of program space.
+
+// Gradient palette "fs2006_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/cl/tn/fs2006.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 56 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( fs2006_gp ) {
+    0,   0, 49,  5,
+   34,   0, 49,  5,
+   34,  79,168, 66,
+   62,  79,168, 66,
+   62, 252,168, 92,
+  103, 252,168, 92,
+  103, 234, 81, 29,
+  143, 234, 81, 29,
+  143, 222, 30,  1,
+  184, 222, 30,  1,
+  184,  90, 13,  1,
+  238,  90, 13,  1,
+  238, 210,  1,  1,
+  255, 210,  1,  1};
+
+
+DEFINE_GRADIENT_PALETTE( bhw4_051_gp ) {
+    0,   1,  1,  4,
+   28,  16, 24, 77,
+   66,  35, 87,160,
+  101, 125,187,205,
+  127, 255,233, 13,
+  145, 125,187,205,
+  193,  28, 70,144,
+  224,  14, 19, 62,
+  255,   1,  1,  4};
+
+// Gradient palette "blue_g2_5_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/go2/webtwo/tn/blue-g2-5.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 16 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( blue_g2_5_gp ) {
+    0,   2,  6, 63,
+  127,   2,  9, 67,
+  255,   255, 255, 115,
+  255,   255, 255, 0};
+
+// Gradient palette "bhw3_41_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw3/tn/bhw3_41.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 36 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw3_41_gp ) {
+    0,   0,  0, 45,
+   71,   7, 12,255,
+   76,  75, 91,255,
+   76, 255,255,255,
+   81, 255,255,255,
+  178, 255,255,255,
+  179, 255, 55, 45,
+  196, 255,  0,  0,
+  255,  42,  0,  0};
+
+DEFINE_GRADIENT_PALETTE( test_gp ) {
+    0,  255,  0,  0, // Red
+// 32,  171, 85,  0, // Orange
+// 64,  171,171,  0, // Yellow
+// 96,    0,255,  0, // Green
+//128,    0,171, 85, // Aqua
+  160,    0,  0,255, // Blue
+//192,   85,  0,171, // Purple
+//224,  171,  0, 85, // Pink
+//255,  255,  0,  0};// and back to Red
+};  
+
+// Gradient palette "bhw2_greenman_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/bhw/bhw2/tn/bhw2_greenman.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 12 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( bhw2_greenman_gp ) {
+    0,   1, 22,  1,
+  130,   1,168,  2,
+  255,   1, 22,  1};
+
+// Gradient palette "PSU_gp" 
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 12 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( PSU_gp ) {
+    0,   4, 30, 66,
+  127,  30, 64, 124,
+  255, 255,255,255};
+
+// Gradient palette "Orange_to_Purple_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/ds/icons/tn/Orange-to-Purple.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 12 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( Orange_to_Purple_gp ) {
+    0, 208, 50,  1,
+  127, 146, 27, 45,
+  255,  97, 12,178};
+
+/* END PALETTE DEFINITIONS */
 
 /******************************** GLOBALS for fade/flash *******************************/
 bool stateOn = false;
@@ -93,6 +289,7 @@ bool startFade = false;
 bool onbeforeflash = false;
 unsigned long lastLoop = 0;
 int transitionTime = 0;
+int delayMultiplier = 1;
 int effectSpeed = 0;
 bool inFade = false;
 int loopCount = 0;
@@ -117,6 +314,11 @@ uint8_t deltahue = 10;
 
 //CANDYCANE
 CRGBPalette16 currentPalettestriped; //for Candy Cane
+CRGBPalette16 hailPalettestriped; //for Hail
+CRGBPalette16 ThxPalettestriped; //for Thanksgiving
+CRGBPalette16 HalloweenPalettestriped; //for Halloween
+CRGBPalette16 HJPalettestriped; //for Holly Jolly
+CRGBPalette16 IndPalettestriped; //for Independence
 CRGBPalette16 gPal; //for fire
 
 //NOISE
@@ -156,7 +358,14 @@ int lightningcounter = 0;
 int idex = 0;                //-LED INDEX (0 to NUM_LEDS-1
 int TOP_INDEX = int(NUM_LEDS / 2);
 int thissat = 255;           //-FX LOOPS DELAY VAR
+
+//////////////////add thishue__ for Police All custom effects here/////////////////////////////////////////////////////////
+/////////////////use hsv Hue number for one color, for second color change "thishue__ + __" in the setEffect section//////
+
 uint8_t thishuepolice = 0;
+uint8_t thishuehail = 183;
+uint8_t thishueLovey = 0;    
+
 int antipodal_index(int i) {
   int iN = i + TOP_INDEX;
   if (i >= TOP_INDEX) {
@@ -196,6 +405,12 @@ void setup() {
   FastLED.addLeds<CHIPSET, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
 
   setupStripedPalette( CRGB::Red, CRGB::Red, CRGB::White, CRGB::White); //for CANDY CANE
+  setupThxPalette( CRGB::OrangeRed, CRGB::Olive, CRGB::Maroon, CRGB::Maroon); //for Thanksgiving
+  setupHailPalette( CRGB::Blue, CRGB::Blue, CRGB::White, CRGB::White); //for HAIL
+  setupHalloweenPalette( CRGB::DarkOrange, CRGB::DarkOrange, CRGB::Indigo, CRGB::Indigo); //for Halloween
+  setupHJPalette( CRGB::Red, CRGB::Red, CRGB::Green, CRGB::Green); //for Holly Jolly
+  setupIndPalette( CRGB::FireBrick, CRGB::Cornsilk, CRGB::MediumBlue, CRGB::MediumBlue); //for Independence
+  
   gPal = HeatColors_p; //for FIRE
 
   setup_wifi();
@@ -519,6 +734,230 @@ void loop() {
   ArduinoOTA.handle();
 
 
+/////////////////////////////////////////  
+//////DrZzs custom effects//////////////
+///////////////////////////////////////
+
+  if (effectString == "Christmas") {                                  // colored stripes pulsing in Shades of GREEN and RED 
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = bhw2_xmas_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+  
+  if (effectString == "St Patty") {                                  // colored stripes pulsing in Shades of GREEN 
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = bhw2_greenman_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+  if (effectString == "Valentine") {                                  // colored stripes pulsing in Shades of PINK and RED 
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = bhw2_redrosey_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+  if (effectString == "Turkey Day") {                                  // colored stripes pulsing in Shades of Brown and ORANGE 
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = bhw2_thanks_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+  if (effectString == "Thanksgiving") {                                  // colored stripes pulsing in Shades of Red and ORANGE and Green 
+    static uint8_t startIndex = 0;
+    startIndex = startIndex + 1; /* higher = faster motion */
+
+    fill_palette( leds, NUM_LEDS,
+                  startIndex, 16, /* higher = narrower stripes */
+                  ThxPalettestriped, 255, LINEARBLEND);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+  
+  if (effectString == "USA") {                                  // colored stripes pulsing in Shades of Red White & Blue 
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = bhw3_41_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+  if (effectString == "Independence") {                        // colored stripes of Red White & Blue
+    static uint8_t startIndex = 0;
+    startIndex = startIndex + 1; /* higher = faster motion */
+
+    fill_palette( leds, NUM_LEDS,
+                  startIndex, 16, /* higher = narrower stripes */
+                  IndPalettestriped, 255, LINEARBLEND);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+
+  if (effectString == "Halloween") {                                  // colored stripes pulsing in Shades of Purple and Orange
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = Orange_to_Purple_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+  if (effectString == "Go Lions") {                                  // colored stripes pulsing in Shades of <strike>Maize and</strike> Blue & White (FTFY DrZZZ :-P)
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = PSU_gp;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+    leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+  }
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+
+  if (effectString == "Hail") {
+    static uint8_t startIndex = 0;
+    startIndex = startIndex + 1; /* higher = faster motion */
+
+    fill_palette( leds, NUM_LEDS,
+                  startIndex, 16, /* higher = narrower stripes */
+                  hailPalettestriped, 255, LINEARBLEND);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+}
+  
+  if (effectString == "Touchdown") {                 //<strike>Maize and</strike> Blue & White with POLICE ALL animation
+    idex++;
+    if (idex >= NUM_LEDS) {
+      idex = 0;
+    }
+    int idexY = idex;
+    int idexB = antipodal_index(idexY);
+    int thathue = ( thishuehail + 64) % 255;
+    leds[idexY] = CRGB::Blue; //CHSV(thishuehail, thissat, 255);
+    leds[idexB] = CRGB::White; //CHSV(thathue, thissat, 255);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+  }
+
+  if (effectString == "Punkin") {
+    static uint8_t startIndex = 0;
+    startIndex = startIndex + 1; /* higher = faster motion */
+
+    fill_palette( leds, NUM_LEDS,
+                  startIndex, 16, /* higher = narrower stripes */
+                  HalloweenPalettestriped, 255, LINEARBLEND);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+  }
+
+    if (effectString == "Lovey Day") {                 //Valentine's Day colors (TWO COLOR SOLID)
+    idex++;
+    if (idex >= NUM_LEDS) {
+      idex = 0;
+    }
+    int idexR = idex;
+    int idexB = antipodal_index(idexR);
+    int thathue = (thishueLovey + 244) % 255;
+    leds[idexR] = CHSV(thishueLovey, thissat, 255);
+    leds[idexB] = CHSV(thathue, thissat, 255);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();  
+  }
+
+  if (effectString == "Holly Jolly") {
+    static uint8_t startIndex = 0;
+    startIndex = startIndex + 1; /* higher = faster motion */
+
+    fill_palette( leds, NUM_LEDS,
+                  startIndex, 16, /* higher = narrower stripes */
+                  HJPalettestriped, 255, LINEARBLEND);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 1;
+    showleds();                  
+  }
+
+/////////////////End DrZzs effects/////////////
+///////////////////////////////////////////////
+
+////////Place your custom effects below////////////
+
+
+
+
+/////////////end custom effects////////////////
+
+///////////////////////////////////////////////
+/////////fastLED & Bruh effects///////////////
+/////////////////////////////////////////////
+
+
+
+
   //EFFECT BPM
   if (effectString == "bpm") {
     uint8_t BeatsPerMinute = 62;
@@ -530,6 +969,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 30;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -544,6 +984,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 0;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -556,6 +997,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 30;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -568,6 +1010,7 @@ void loop() {
       // Set the i'th led to red
       leds[i] = CHSV(hue++, 255, 255);
       // Show the leds
+      delayMultiplier = 1;
       showleds();
       // now that we've shown the leds, reset the i'th led to black
       // leds[i] = CRGB::Black;
@@ -579,6 +1022,7 @@ void loop() {
       // Set the i'th led to red
       leds[i] = CHSV(hue++, 255, 255);
       // Show the leds
+      delayMultiplier = 1;
       showleds();
       // now that we've shown the leds, reset the i'th led to black
       // leds[i] = CRGB::Black;
@@ -601,7 +1045,8 @@ void loop() {
 
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 30;
-    }
+    }    
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -612,6 +1057,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 150;
     }
+    delayMultiplier = 2;
     showleds();
   }
 
@@ -625,6 +1071,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 30;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -638,6 +1085,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 130;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -666,6 +1114,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 0;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -684,6 +1133,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 30;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -710,6 +1160,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 30;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -722,6 +1173,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 130;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -735,11 +1187,12 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 130;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
 
-  //EFFECT SIENLON
+  //EFFECT SINELON
   if (effectString == "sinelon") {
     fadeToBlackBy( leds, NUM_LEDS, 20);
     int pos = beatsin16(13, 0, NUM_LEDS - 1);
@@ -747,6 +1200,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 150;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -775,6 +1229,7 @@ void loop() {
     if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 0;
     }
+    delayMultiplier = 1;
     showleds();
   }
 
@@ -788,22 +1243,24 @@ void loop() {
           leds[i] = CRGB::DarkGreen;
         }
       }
-      if (toggle == 0) {
+      /*if (toggle == 0) {
         toggle = 1;
       }
       else {
         toggle = 0;
-      }
+      }*/ toggle=(toggle + 1) % 2;
       if (transitionTime == 0 or transitionTime == NULL) {
       transitionTime = 130;
       }
-      showleds();   
-      delay(30);
+      delayMultiplier = 30;
+      showleds();  
+      fadeall(); 
+      //delay(200);
   }
 
   //EFFECT RANDOM STARS
   if (effectString == "random stars") {
-      if(toggle==0)
+ /*     if(toggle==0)
       {        
         for (int i = 0; i < NUM_STARS; i++)
         {
@@ -834,7 +1291,19 @@ void loop() {
           toggle = 0;
         }
       }
-      showleds();        
+      showleds();   
+*/
+    fadeUsingColor( leds, NUM_LEDS, CRGB::Blue);
+    int pos = random16(NUM_LEDS);
+    leds[pos] += CRGB(realRed + random8(64), realGreen, realBlue);
+    addGlitter(80);
+    if (transitionTime == 0 or transitionTime == NULL) {
+      transitionTime = 30;
+    }
+    delayMultiplier = 6;
+    //delay(60);
+    showleds();
+           
   }
 
 //EFFECT "Sine Hue"
@@ -854,11 +1323,86 @@ void loop() {
      if (hue_index >= 255) {
         hue_index = 0;
       }
+      delayMultiplier = 2;
       showleds();        
   }
 
 
+//EFFECT "Full Hue"
+  if (effectString == "full hue") {
+      static uint8_t hue_index = 0;
+      fill_solid(leds, NUM_LEDS, CHSV(hue_index, 255, 255));
+      hue_index++;
 
+     if (hue_index >= 255) {
+        hue_index = 0;
+      }
+      delayMultiplier = 2;
+      showleds();        
+  }
+  
+
+//EFFECT "Breathe"
+  if (effectString == "breathe") {
+      static bool toggle;
+      static uint8_t brightness_index = 0;
+      fill_solid(leds, NUM_LEDS,CHSV(thishue,255,brightness_index));
+      if (brightness_index >= 255) {
+        toggle=0;        
+      }
+      else if (brightness_index <= 0)
+      {
+        toggle=1;
+      }
+
+      if (toggle)
+      {
+        brightness_index++;
+      }
+      else
+      {
+       brightness_index--;
+      }
+      
+      delayMultiplier = 2;
+      showleds();        
+  }
+
+
+//EFFECT "Hue Breathe"
+  if (effectString == "hue breathe") {
+      static uint8_t hue_index = 0;
+      static bool toggle = 1;
+      static uint8_t brightness_index = 0;
+      fill_solid(leds, NUM_LEDS, CHSV(hue_index, 255, brightness_index));
+      if (brightness_index >= 255) {
+        toggle=0;
+        hue_index=hue_index+10;
+      }
+      else if (brightness_index <= 0)
+      {
+        toggle=1;
+        hue_index=hue_index+10;
+      }
+
+      if (toggle)
+      {
+        brightness_index++;
+      }
+      else
+      {
+       brightness_index--;
+      }
+      
+      if (hue_index >= 255) {
+        hue_index = 0;
+      }
+      
+      delayMultiplier = 2;
+      showleds();        
+  }
+
+    
 
   EVERY_N_MILLISECONDS(10) {
 
@@ -878,6 +1422,7 @@ void loop() {
       if (transitionTime == 0 or transitionTime == NULL) {
         transitionTime = 0;
       }
+      delayMultiplier = 1;
       showleds();
     }
 
@@ -906,6 +1451,7 @@ void loop() {
       if (transitionTime == 0 or transitionTime == NULL) {
         transitionTime = 30;
       }
+      delayMultiplier = 1;
       showleds();
     }
 
@@ -1052,6 +1598,8 @@ int calculateVal(int step, int val, int i) {
   return val;
 }
 
+////////////////////////place setup__Palette and __Palettestriped custom functions here - for Candy Cane effects ///////////////// 
+///////You can use up to 4 colors and change the pattern of A's AB's B's and BA's as you like//////////////
 
 
 /**************************** START STRIPLED PALETTE *****************************************/
@@ -1062,6 +1610,42 @@ void setupStripedPalette( CRGB A, CRGB AB, CRGB B, CRGB BA) {
                           );
 }
 
+void setupHailPalette( CRGB A, CRGB AB, CRGB B, CRGB BA)
+{
+  hailPalettestriped = CRGBPalette16(
+                            A, A, A, A, A, A, A, A, B, B, B, B, B, B, B, B
+                          );
+}
+
+void setupHJPalette( CRGB A, CRGB AB, CRGB B, CRGB BA)
+{
+  HJPalettestriped = CRGBPalette16(
+                            A, A, A, A, A, A, A, A, B, B, B, B, B, B, B, B
+                          );
+}
+
+void setupIndPalette( CRGB A, CRGB AB, CRGB B, CRGB BA)
+{
+  IndPalettestriped = CRGBPalette16(
+                            A, A, A, A, A, AB, AB, AB, AB, AB, B, B, B, B, B, B
+                          );
+}
+
+void setupThxPalette( CRGB A, CRGB AB, CRGB B, CRGB BA)
+{
+  ThxPalettestriped = CRGBPalette16(
+                            A, A, A, A, A, A, A, AB, AB, AB, B, B, B, B, B, B
+                          );
+}
+
+void setupHalloweenPalette( CRGB A, CRGB AB, CRGB B, CRGB BA)
+{
+  HalloweenPalettestriped = CRGBPalette16(
+                            A, A, A, A, A, A, A, A, B, B, B, B, B, B, B, B
+                          );
+}
+
+////////////////////////////////////////////////////////
 
 
 /********************************** START FADE************************************************/
@@ -1142,7 +1726,7 @@ void showleds() {
     FastLED.setBrightness(brightness);  //EXECUTE EFFECT COLOR
     FastLED.show();
     if (transitionTime > 0 && transitionTime < 250) {  //Sets animation speed based on receieved value
-      FastLED.delay(1000 / transitionTime);
+      FastLED.delay(transitionTime / 10 * delayMultiplier); //1000 / transitionTime);
       //delay(10*transitionTime);
     }
   }
