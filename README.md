@@ -4,7 +4,7 @@ This is my version of the NodeMCU LED strip controller, based on bruhAutomation'
 
 - Ability to control mutliple strips at once using grouped MQTT topics
 - A fix for flickering issues with faster chipsets (FastLED interrupt issue)
-- Additional effects written by me (Christmas tree, Sine Wave, Random Stars)
+- Additional effects written by me (Christmas tree, Sine Wave, Random Stars, Breathe, Hue Breathe)
 - Making the entire project "production-quality" using a [printed circuit board](https://www.pcbway.com/project/shareproject/NodeMCU_DHT_Sensor_LED_Controller_Breakout_Board_v_1_1.html) to hold the components/wiring together and a [3d printed enclosure](https://www.thingiverse.com/thing:2690563) to make the controller look professional installed around the home.
 - Focusing on [openHAB](https://www.openhab.org) as the home automation control suite, since it is what I use.
 
@@ -30,8 +30,12 @@ This code also supports remote uploading to the ESP8266 using Arduino's OTA libr
 
 #### Arduino IDE Setup video
 [![Tutorial Video](http://img.youtube.com/vi/7dm9OPTRvUQ/0.jpg)](https://youtu.be/7dm9OPTRvUQ)
+
 #### openHAB Configuration Video
 [![openHAB Video](https://img.youtube.com/vi/Lnv-2xBhabo/0.jpg)](https://youtu.be/Lnv-2xBhabo)
+
+#### Long String Considerations (Power Injectino) Video
+[![Long Strings](https://img.youtube.com/LJ6GQrCnGWQ/0.jpg)](https://youtu.be/LJ6GQrCnGWQ)
 
 #### Parts List
 - [Digital RGB WS2812 LED Strip](http://amzn.to/2ilIvdf)
