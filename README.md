@@ -35,7 +35,7 @@ This code also supports remote uploading to the ESP8266 using Arduino's OTA libr
 [![openHAB Video](https://img.youtube.com/vi/Lnv-2xBhabo/0.jpg)](https://youtu.be/Lnv-2xBhabo)
 
 #### Long String Considerations (Power Injectino) Video
-[![Long Strings](https://img.youtube.com/LJ6GQrCnGWQ/0.jpg)](https://youtu.be/LJ6GQrCnGWQ)
+[![Long Strings](https://img.youtube.com/vi/LJ6GQrCnGWQ/0.jpg)](https://youtu.be/LJ6GQrCnGWQ)
 
 #### Parts List
 - [Digital RGB WS2812 LED Strip](http://amzn.to/2ilIvdf)
