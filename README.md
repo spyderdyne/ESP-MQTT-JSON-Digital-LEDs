@@ -1,6 +1,6 @@
 # ESP MQTT JSON Digital LEDs
 
-This is my version BKPSU's version of the NodeMCU LED strip controller, based on bruhAutomation's [project](https://github.com/bruhautomation/ESP-MQTT-JSON-Digital-LEDs), with my own modifications, including:
+This is my forked version BKPSU's forked version of the NodeMCU LED strip controller, based on bruhAutomation's [project](https://github.com/bruhautomation/ESP-MQTT-JSON-Digital-LEDs), with my own modifications, including:
 
 - Ability to control mutliple strips at once using grouped MQTT topics
 - A fix for flickering issues with faster chipsets (FastLED interrupt issue)
